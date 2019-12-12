@@ -1,0 +1,13 @@
+<% if food_menus.any? %>
+  <div class="row">
+    <% food_menus.each do |food_menu| %>
+      <div class="col-sm-4">
+        <div>
+          <%= link_to food_menu_path(food_menu) do %>
+            <%= image_tag gravatar_url(food_menu, { size: 50 }) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
