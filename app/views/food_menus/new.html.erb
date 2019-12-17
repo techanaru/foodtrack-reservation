@@ -1,2 +1,34 @@
-<h1>FoodMenus#new</h1>
-<p>Find me in app/views/food_menus/new.html.erb</p>
+<div class="row">
+  <div class="offset-sm-3">
+    <%= form_with(model: @food_menu, local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :name, 'メニュー名' %>
+        <%= f.text_field :name %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :sales_quantity, '本日の販売数' %>
+        <%= f.number_field :sales_quantity %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :price, '価格' %>
+        <%= f.number_field :price %>
+      </div>
+      
+      
+      <div class="form-group">
+        <%= f.label :image, '画像' %>
+        <p><%= f.file_field :image %></p>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :food_track_id, 'トラックID' %>
+        <p><%= f.number_field :food_track_id %></p>
+      </div>
+      
+      <%= f.submit 'アップロードする', class: 'btn btn-primary btn-lg' %>
+    <% end %>  
+  </div>
+</div>

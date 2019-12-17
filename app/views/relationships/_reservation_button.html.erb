@@ -1,0 +1,13 @@
+<% if current_user %>
+  <% if current_user.food_menu_reservation?(food_menu) %>
+    <%= form_with(model: current_user.reservations.find_by(food_menu_id: food_menu.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :food_menu_id, food_menu.id %>
+      <%= f.submit '予約をキャンセル', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.reservations.build, local: true) do |f| %>
+      <%= hidden_field_tag :food_menu_id, food_menu.id %>
+      <%= f.submit '予約する', class: 'btn btn-primary btn-sm' %>
+    <% end %>
+  <% end %>
+<% end %>

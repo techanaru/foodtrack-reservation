@@ -1,9 +1,3 @@
-<% if @food_menu.any? %>
-  <div class="row">
-    <% @food_menu.each do |food_menu| %>
-      <div class="col-sm-4">
-        <p><%= link_to food_menu.name, food_menu_path(food_menu) %></p>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'layouts/food_menus', food_menu: @food_menu %>
+
+<%= render 'layouts/footer' %>

@@ -1,0 +1,12 @@
+<% if food_track.any? %>
+  <div class="row">
+    <% food_track.each do |food_track| %>
+      <div class="col-sm-3">
+        <a href="<%= food_track_path(food_track) %>"><img class="img-thumbnail" src="<%= food_track.image.url %>" alt=""></a
+        <span class="text-left">
+          <%= food_track.name %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+<% end %>

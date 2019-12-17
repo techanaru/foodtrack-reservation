@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reservations = @user.food_menu_reservations.page(params[:page])
   end
 
   def new
@@ -33,6 +34,12 @@ class UsersController < ApplicationController
   def destroy
   end
   
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.food_track_favorites.page(params[:page])
+  end
+  
+
   private
   
   #Strong Paramater

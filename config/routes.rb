@@ -8,7 +8,16 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users
+  resources :users do
+    member do
+      get 'reservations'
+      get 'favorites'
+    end
+  end
+  
   resources :food_tracks
   resources :food_menus
+  resources :user_food_track_favorites, only: [:create, :destroy]
+  resources :reservations, only: [:create, :destroy]
+  resources :track_place_relationships, only: [:create, :destroy]
 end

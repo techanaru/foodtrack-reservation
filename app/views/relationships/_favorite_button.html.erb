@@ -1,0 +1,13 @@
+<% if current_user %>
+  <% if current_user.food_track_favorite?(food_track) %>
+    <%= form_with(model: current_user.user_food_track_favorites.find_by(food_track_id: food_track.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :food_track_id, food_track.id %>
+      <%= f.submit 'お気に入りを解除', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.user_food_track_favorites.build, local: true) do |f| %>
+      <%= hidden_field_tag :food_track_id, food_track.id %>
+      <%= f.submit 'お気に入りに登録', class: 'btn btn-primary btn-sm' %>
+    <% end %>
+  <% end %>
+<% end %>

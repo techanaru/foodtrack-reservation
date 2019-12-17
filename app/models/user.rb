@@ -11,32 +11,33 @@ class User < ApplicationRecord
   has_many :reservations
   has_many :food_menu_reservations, through: :reservations, source: :food_menu, dependent: :destroy
   
-#トラックのお気に入り
-  def food_track_favorite(other_food_track)
-      self.user_food_track_favorites.find_or_create_by(food_track_id: other_food_track.id)
+  #トラックのお気に入り
+  def food_track_favorite(food_track)
+      self.user_food_track_favorites.find_or_create_by(food_track_id: food_track.id)
   end
 
-  def food_track_unfavorite(other_food_track)
-    favorite = self.user_food_track_favorites.find_by(food_track_id: other_food_track.id)
+  def food_track_unfavorite(food_track)
+    favorite = self.user_food_track_favorites.find_by(food_track_id: food_track.id)
     favorite.destroy if favorite
   end
   
-  def food_track_favorite?(other_food_track)
-    self.food_track_favorites.include?(other_food_track)
-  end
-
-#メニューの予約
-  def food_menu_reservation(other_food_menu)
-      self.reservations.find_or_create_by(food_menu_id: other_food_menu.id)
+  def food_track_favorite?(food_track)
+    self.food_track_favorites.include?(food_track)
   end
   
-  def food_menu_reservation_cancel(other_food_menu)
-    reservation = self.reservations.find_by(food_menu_id: other_food_menu.id)
+
+#メニューの予約
+  def food_menu_reservation(food_menu)
+      self.reservations.find_or_create_by(food_menu_id: food_menu.id)
+  end
+  
+  def food_menu_reservation_cancel(food_menu)
+    reservation = self.reservations.find_by(food_menu_id: food_menu.id)
     reservation.destroy if reservation
   end
   
-  def food_menu_reservation?(other_food_menu)
-    self.food_menu_reservations.include?(other_food_menu)
+  def food_menu_reservation?(food_menu)
+    self.food_menu_reservations.include?(food_menu)
   end
   
 end

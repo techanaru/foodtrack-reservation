@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_132218) do
+ActiveRecord::Schema.define(version: 2019_12_15_043107) do
 
   create_table "food_menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "picture"
+    t.string "image"
     t.integer "sales_quantity"
     t.integer "price"
     t.bigint "food_track_id"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_132218) do
 
   create_table "food_tracks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "picture"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

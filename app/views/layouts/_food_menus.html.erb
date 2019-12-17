@@ -1,0 +1,15 @@
+<% if food_menu.any? %>
+  <div class="row">
+    <% food_menu.each do |food_menu| %>
+      <div class="col-sm-3">
+        <a href="<%= food_menu_path(food_menu) %>"><img class="img-thumbnail" src="<%= food_menu.image.url %>" alt=""></a>
+        <span class="text-left">
+          <%= food_menu.name %>
+        </span>
+        <span class="badge badge-primary">
+          <%= food_menu.sales_quantity %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+<% end %>

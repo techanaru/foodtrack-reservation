@@ -1,2 +1,16 @@
-<h1>FoodMenus#show</h1>
-<p>Find me in app/views/food_menus/show.html.erb</p>
+<div class="row">
+  <aside class="col-sm-6">
+    <div class="text-left">
+      <h3><%= @food_menu.name %></h3>
+    </div>
+      <img class="img-thumbnail" src="<%= @food_menu.image.url %>" alt="">
+    </div>
+    <div>
+      <br>
+      <%= render 'relationships/reservation_button', food_menu: @food_menu %>
+    </div>
+  </aside>
+  <div class="col-sm-6">
+    <%= render 'layouts/map' %>
+  </div>
+</div>

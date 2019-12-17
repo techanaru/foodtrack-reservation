@@ -1,2 +1,18 @@
-<h1>FoodTracks#new</h1>
-<p>Find me in app/views/food_tracks/new.html.erb</p>
+<div class="row">
+  <div class="offset-sm-3">
+    <%= form_with(model: @food_track,local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :name, 'トラック名' %>
+        <%= f.text_field :name %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :image, '画像' %>
+        <p><%= f.file_field :image %></p>
+      </div>
+      
+      <%= f.submit 'アップロードする', class: 'btn btn-primary btn-lg' %>
+    <% end %>
+  </div>
+</div>

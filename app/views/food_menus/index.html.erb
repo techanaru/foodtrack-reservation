@@ -1,2 +1,10 @@
-<h1>FoodMenus#index</h1>
-<p>Find me in app/views/food_menus/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <% @food_menu.each do |food_menu| %>
+      <div class="col-sm-3">
+        <a href="<%= food_menu_path(food_menu) %>"><img class="img-thumbnail" src="<%= food_menu.image.url %>" alt=""></a>
+      </div>
+      <h3><%= food_menu.name %></h3>
+    <% end %>
+  </div>
+</div>
